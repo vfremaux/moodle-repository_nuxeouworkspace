@@ -1,0 +1,11 @@
+.repository_nuxeo .fp-toolbar .fp-tb-search {
+    width: auto;
+}
+.repository_nuxeo .fp-toolbar .fp-tb-search .nuxeo-workplace {
+    background-color: #fff;
+    border-color: #bbb;
+    border-radius: 4px;
+    height: 32px;
+    padding: 2px 1px 1px 1px;
+    width: 140px;
+}
