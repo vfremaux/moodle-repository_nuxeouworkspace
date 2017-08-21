@@ -107,7 +107,9 @@ class repository_nuxeouworkspace extends repository {
      * @param array $options
      */
     public function __construct($repositoryid, $context = SYSCONTEXTID, $options = array()) {
-        global $CFG, $USER;
+        global $USER;
+
+        $config = get_config('local_nuxeolibs');
 
         parent::__construct($repositoryid, $context, $options);
         $this->set_params_options();
@@ -115,7 +117,7 @@ class repository_nuxeouworkspace extends repository {
         // Get url base and construct requeste url.
         $this->url_base = $this->params['url'];
         $this->url_nuxeo = nuxeo::construct_nuxeo_url($this->url_base);
-        $this->secret_key = $CFG->nuxeokey;
+        $this->secret_key = $config->nuxeokey;
         $this->user_name = $USER->username; // 'U_Contrib1' ; //
         
         $this->nuxeo = new nuxeo($this->url_nuxeo, $this->user_name, $this->secret_key);

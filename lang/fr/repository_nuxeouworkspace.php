@@ -21,10 +21,10 @@
  * @copyright 2014 Rectorat Rennes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['nuxeouworkspace:view'] = 'Voir le dépot Nuxeo';
+$string['nuxeouworkspace:view'] = 'Voir le dÃ©pot Nuxeo';
 
 $string['username'] = 'nom d\'utilisateur';
-$string['pluginname'] = 'Dépot personnel Nuxeo';
+$string['pluginname'] = 'DÃ©pot personnel Nuxeo';
 $string['configplugin'] = 'Configuration';
 $string['Workspaces'] = 'Workspaces';
 $string['nuxeoRoot'] = 'home';
