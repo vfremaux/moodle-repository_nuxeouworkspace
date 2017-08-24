@@ -116,8 +116,8 @@ class repository_nuxeouworkspace extends repository {
         $this->url_base = $this->params['url'];
         $this->url_nuxeo = nuxeo::construct_nuxeo_url($this->url_base);
         $this->secret_key = $CFG->nuxeokey;
-        $this->user_name = $USER->username; // 'U_Contrib1' ; //
-        
+        $this->user_name = $USER->username;
+
         $this->nuxeo = new nuxeo($this->url_nuxeo, $this->user_name, $this->secret_key);
         $this->nuxeo->set_params($this->params);
     }
@@ -134,7 +134,7 @@ class repository_nuxeouworkspace extends repository {
         global $OUTPUT, $SESSION;
 
         if ($this->userworspacepath == null) {
-            $this->userworspacepath = $this->nuxeo->getuserworkspacePath();
+        	$this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
         }
 
         // Last path visited.
@@ -154,7 +154,7 @@ class repository_nuxeouworkspace extends repository {
             $path = $this->userworspacepath;
 
             if ($path == null) {
-                throw new repository_exception('repositoryerror', 'repository', '', '');
+                throw new repository_exception('repositoryerror', 'repository', '', 'user workspace path is empty');
             }
         }
 
@@ -381,7 +381,7 @@ class repository_nuxeouworkspace extends repository {
 
         $path = $SESSION->last_path;
         if ($this->userworspacepath == null) {
-            $this->userworspacepath = $this->nuxeo->getuserworkspacePath();
+        	$this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
         }
 
         $ret = array();
@@ -614,6 +614,9 @@ class repository_nuxeouworkspace extends repository {
 
             // Nuxeourl.
             $this->params['url'] = (string) $admin_settings->url;
+            if ($this->params['url'] == null){
+            	throw new moodle_exception('configerror', 'repository_nuxeouworkspace', '', "url=".$this->params['url']." non récupérée dans la conf du plugin Nuxeo");
+            }
             $this->url_base_user_manage = (string) $admin_settings->url_base_user_manage;
         } catch (Exception $e) {
             throw new moodle_exception('configerror', 'repository_nuxeouworkspace', '', $e->getMessage());
