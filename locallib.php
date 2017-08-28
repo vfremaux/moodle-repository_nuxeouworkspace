@@ -38,10 +38,6 @@ class nuxeo {
 
     private $space;
 
-    // private static QUERY = 'query';
-
-    // private static GETBLOC = 'getbloc';
-
     function __construct($url, $user_name, $secret_key) {
 
         $interceptorSSO = new PortalSSORequestInterceptor($user_name, $secret_key);
@@ -117,13 +113,14 @@ class nuxeo {
         return $answer;
     }
 
-    public function getuserworkspacePath() {
+    public function getuserworkspacePath($userId) {
         $sql = "
             SELECT
                 *
             FROM
                 UserWorkspace
             WHERE
+				dc:title = '".$userId."' AND
                 ecm:currentLifeCycleState != 'deleted' AND
                 ecm:isCheckedInVersion = 0 AND
                 ecm:isProxy = 0
@@ -135,8 +132,12 @@ class nuxeo {
         if (empty($answer->error)) {
             $doc = current($answer->content);
             return $doc->getPath();
+        }else{
+        	error_log($url);
+        	throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
         }
-        return null;
+        
+        
     }
 
     public static function download($ref) {
@@ -244,6 +245,7 @@ class nuxeo {
                 $result->content = $answer;
             }
         } catch (Exception $ex) {
+        	error_log($ex);
             $result->error = $ex->getMessage();
         }
 
