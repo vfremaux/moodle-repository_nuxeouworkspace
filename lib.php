@@ -107,7 +107,9 @@ class repository_nuxeouworkspace extends repository {
      * @param array $options
      */
     public function __construct($repositoryid, $context = SYSCONTEXTID, $options = array()) {
-        global $CFG, $USER;
+        global $USER;
+
+        $config = get_config('local_nuxeolibs');
 
         parent::__construct($repositoryid, $context, $options);
         $this->set_params_options();
@@ -115,9 +117,15 @@ class repository_nuxeouworkspace extends repository {
         // Get url base and construct requeste url.
         $this->url_base = $this->params['url'];
         $this->url_nuxeo = nuxeo::construct_nuxeo_url($this->url_base);
+<<<<<<< HEAD
         $this->secret_key = $CFG->nuxeokey;
         $this->user_name = $USER->username;
 
+=======
+        $this->secret_key = $config->nuxeokey;
+        $this->user_name = $USER->username; // 'U_Contrib1' ; //
+        error_log("url base=".$this->url_base." url_nuxeo=".$this->url_nuxeo." user_name=".$this->user_name." secret_key=".$this->secret_key);
+>>>>>>> MOODLE_34_STABLE
         $this->nuxeo = new nuxeo($this->url_nuxeo, $this->user_name, $this->secret_key);
         $this->nuxeo->set_params($this->params);
     }
@@ -134,7 +142,11 @@ class repository_nuxeouworkspace extends repository {
         global $OUTPUT, $SESSION;
 
         if ($this->userworspacepath == null) {
+<<<<<<< HEAD
         	$this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
+=======
+            $this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
+>>>>>>> MOODLE_34_STABLE
         }
 
         // Last path visited.
@@ -372,6 +384,7 @@ class repository_nuxeouworkspace extends repository {
     }
 
     public function print_search() {
+
         $str = parent::print_search();
         return $str;
     }
@@ -381,7 +394,11 @@ class repository_nuxeouworkspace extends repository {
 
         $path = $SESSION->last_path;
         if ($this->userworspacepath == null) {
+<<<<<<< HEAD
         	$this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
+=======
+            $this->userworspacepath = $this->nuxeo->getuserworkspacePath($this->user_name);
+>>>>>>> MOODLE_34_STABLE
         }
 
         $ret = array();
@@ -614,9 +631,17 @@ class repository_nuxeouworkspace extends repository {
 
             // Nuxeourl.
             $this->params['url'] = (string) $admin_settings->url;
+<<<<<<< HEAD
             if ($this->params['url'] == null){
             	throw new moodle_exception('configerror', 'repository_nuxeouworkspace', '', "url=".$this->params['url']." non récupérée dans la conf du plugin Nuxeo");
             }
+=======
+            
+		            if ($this->params['url'] == null){
+            	throw new moodle_exception('configerror', 'repository_nuxeouworkspace', '', "url=".$this->params['url']." non récupérée dans la conf du plugin Nuxeo");
+            }
+
+>>>>>>> MOODLE_34_STABLE
             $this->url_base_user_manage = (string) $admin_settings->url_base_user_manage;
         } catch (Exception $e) {
             throw new moodle_exception('configerror', 'repository_nuxeouworkspace', '', $e->getMessage());

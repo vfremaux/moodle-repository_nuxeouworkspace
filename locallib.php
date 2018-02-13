@@ -120,7 +120,11 @@ class nuxeo {
             FROM
                 UserWorkspace
             WHERE
+<<<<<<< HEAD
 				dc:title = '".$userId."' AND
+=======
+                dc:title = '".$userId."' AND
+>>>>>>> MOODLE_34_STABLE
                 ecm:currentLifeCycleState != 'deleted' AND
                 ecm:isCheckedInVersion = 0 AND
                 ecm:isProxy = 0
@@ -132,12 +136,20 @@ class nuxeo {
         if (empty($answer->error)) {
             $doc = current($answer->content);
             return $doc->getPath();
+<<<<<<< HEAD
         }else{
         	error_log($url);
         	throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
         }
         
         
+=======
+        } else {
+            throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
+        }
+
+        return null;
+>>>>>>> MOODLE_34_STABLE
     }
 
     public static function download($ref) {
@@ -245,7 +257,11 @@ class nuxeo {
                 $result->content = $answer;
             }
         } catch (Exception $ex) {
+<<<<<<< HEAD
         	error_log($ex);
+=======
+            error_log($ex);
+>>>>>>> MOODLE_34_STABLE
             $result->error = $ex->getMessage();
         }
 
