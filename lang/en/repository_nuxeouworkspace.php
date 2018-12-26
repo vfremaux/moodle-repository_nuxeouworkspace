@@ -15,13 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'repository_nuxeo', language 'en', branch 'MOODLE_24_STABLE'
- *
  * @package   repository_nuxeouworkspace
  * @copyright 2014 Rectorat Rennes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+// Capabilities.
 $string['nuxeouworkspace:view'] = 'View nuxeo repository';
+
+// Privacy.
+$string['privacy:metadata'] = 'The Nuxeo User Worspace Repository plugin does not store directly any personal data about any user.';
 
 $string['username'] = 'User name';
 $string['pluginname'] = 'Nuxeo user workspace';

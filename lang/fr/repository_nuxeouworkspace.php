@@ -15,13 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'repository_nuxeo', language 'fr', branch 'MOODLE_24_STABLE'
- *
  * @package   repository_nuxeouworkspace
  * @copyright 2014 Rectorat Rennes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['nuxeouworkspace:view'] = 'Voir le dépot Nuxeo';
+
+// Privacy.
+$string['privacy:metadata'] = 'Le dépot Espaces Personnels Nuxeo ne stocke pas directement de données relatives aux utilisateurs.';
 
 $string['username'] = 'nom d\'utilisateur';
 $string['pluginname'] = 'Dépot personnel Nuxeo';

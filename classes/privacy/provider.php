@@ -15,21 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Privacy Subsystem implementation for repository_nuxeouworkspace.
  *
  * @package    repository_nuxeouworkspace
- * @category   repository
- * @copyright  Académie de Rennes (http://www.toutatice.fr)
+ * @copyright  2014 Rectorat Rennes, 2018 Valery Fremaux <valery.fremaux@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace repository_nuxeouworkspace\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2018100200;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2018112800;        // Requires this Moodle version.
-$plugin->component = 'repository_nuxeouworkspace'; // Full name of the plugin (used for diagnostics).
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '3.6.0 (Build 2018100200)';
+/**
+ * Privacy Subsystem for repository_nuxeouworkspace implementing null_provider.
+ *
+ * @copyright  2014 Rectorat Rennes, 2018 Valery Fremaux <valery.fremaux@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
 
-// Non moodle attributes.
-$plugin->codeincrement = '3.6.0000';
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
