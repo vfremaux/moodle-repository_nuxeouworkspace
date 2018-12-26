@@ -25,6 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+<<<<<<< HEAD
 $plugin->version   = 2016052300;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2017110800;        // Requires this Moodle version.
 $plugin->component = 'repository_nuxeouworkspace'; // Full name of the plugin (used for diagnostics).
@@ -33,3 +34,13 @@ $plugin->release = '3.4.0 (Build 2014051600)';
 
 // Non moodle attributes.
 $plugin->codeincrement = '3.4.0000';
+=======
+$plugin->version   = 2018100200;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires  = 2018112800;        // Requires this Moodle version.
+$plugin->component = 'repository_nuxeouworkspace'; // Full name of the plugin (used for diagnostics).
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '3.6.0 (Build 2018100200)';
+
+// Non moodle attributes.
+$plugin->codeincrement = '3.6.0000';
+>>>>>>> MOODLE_36_STABLE

@@ -121,10 +121,14 @@ class nuxeo {
                 UserWorkspace
             WHERE
 <<<<<<< HEAD
+<<<<<<< HEAD
 				dc:title = '".$userId."' AND
 =======
                 dc:title = '".$userId."' AND
 >>>>>>> MOODLE_34_STABLE
+=======
+                dc:title = '".$userId."' AND
+>>>>>>> MOODLE_36_STABLE
                 ecm:currentLifeCycleState != 'deleted' AND
                 ecm:isCheckedInVersion = 0 AND
                 ecm:isProxy = 0
@@ -137,6 +141,7 @@ class nuxeo {
             $doc = current($answer->content);
             return $doc->getPath();
 <<<<<<< HEAD
+<<<<<<< HEAD
         }else{
         	error_log($url);
         	throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
@@ -147,6 +152,11 @@ class nuxeo {
         } else {
             throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
         }
+=======
+        } else {
+            throw new repository_exception('repositoryerror', 'repository_nuxeouworkspace', '', $answer->error);
+        }
+>>>>>>> MOODLE_36_STABLE
 
         return null;
 >>>>>>> MOODLE_34_STABLE
@@ -258,10 +268,14 @@ class nuxeo {
             }
         } catch (Exception $ex) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         	error_log($ex);
 =======
             error_log($ex);
 >>>>>>> MOODLE_34_STABLE
+=======
+            error_log($ex);
+>>>>>>> MOODLE_36_STABLE
             $result->error = $ex->getMessage();
         }
 
